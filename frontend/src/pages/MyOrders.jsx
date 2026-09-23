@@ -28,7 +28,7 @@ export const MyOrders = () => {
 
   if (loading) {
     return (
-      <div style={{ padding: '40px 20px', textAlign: 'center', color: '#64748b' }}>
+      <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--text-muted)' }}>
         Loading your protected order history...
       </div>
     );
@@ -42,20 +42,21 @@ export const MyOrders = () => {
             width: '44px',
             height: '44px',
             borderRadius: '12px',
-            background: '#e0e7ff',
-            color: '#4f46e5',
+            background: 'var(--bg-surface-elevated)',
+            color: 'var(--accent-primary)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            border: '1px solid var(--border-color)',
           }}
         >
           <ShoppingBag size={24} />
         </div>
         <div>
-          <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#1e293b', margin: 0 }}>
+          <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>
             My Orders (JWT Protected)
           </h2>
-          <p style={{ color: '#64748b', fontSize: '14px', margin: '2px 0 0' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: '2px 0 0' }}>
             Viewing orders for signed-in user: <strong>{user?.name}</strong> ({user?.email})
           </p>
         </div>
@@ -65,9 +66,9 @@ export const MyOrders = () => {
         <div
           style={{
             padding: '16px',
-            background: '#fef2f2',
-            border: '1px solid #fecaca',
-            color: '#991b1b',
+            background: 'rgba(239, 68, 68, 0.15)',
+            border: '1px solid var(--error-color)',
+            color: 'var(--error-color)',
             borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
@@ -79,16 +80,17 @@ export const MyOrders = () => {
       ) : orders.length === 0 ? (
         <div
           style={{
-            background: '#fff',
+            background: 'var(--card-bg)',
             borderRadius: '12px',
             padding: '48px 24px',
             textAlign: 'center',
-            border: '1px solid #e2e8f0',
+            border: '1px solid var(--border-color)',
+            transition: 'var(--theme-transition)',
           }}
         >
-          <Package size={48} style={{ color: '#cbd5e1', marginBottom: '12px' }} />
-          <h3 style={{ fontSize: '18px', color: '#334155', margin: '0 0 6px' }}>No Orders Found</h3>
-          <p style={{ color: '#64748b', fontSize: '14px', margin: 0 }}>
+          <Package size={48} style={{ color: 'var(--text-muted)', marginBottom: '12px' }} />
+          <h3 style={{ fontSize: '18px', color: 'var(--text-primary)', margin: '0 0 6px' }}>No Orders Found</h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>
             You haven't placed any orders yet. Explore our product catalog!
           </p>
         </div>
@@ -98,19 +100,20 @@ export const MyOrders = () => {
             <div
               key={order.id}
               style={{
-                background: '#ffffff',
+                background: 'var(--card-bg)',
                 borderRadius: '12px',
-                border: '1px solid #e2e8f0',
+                border: '1px solid var(--border-color)',
                 padding: '20px 24px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                boxShadow: 'var(--shadow-sm)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
+                transition: 'var(--theme-transition)',
               }}
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
-                  <span style={{ fontWeight: '700', fontSize: '16px', color: '#1e293b' }}>
+                  <span style={{ fontWeight: '700', fontSize: '16px', color: 'var(--text-primary)' }}>
                     Order #{order.id}
                   </span>
                   <span
@@ -121,22 +124,23 @@ export const MyOrders = () => {
                       borderRadius: '20px',
                       background:
                         order.status === 'Delivered'
-                          ? '#dcfce7'
+                          ? 'rgba(16, 185, 129, 0.15)'
                           : order.status === 'Shipped'
-                          ? '#dbeafe'
-                          : '#fef3c7',
+                          ? 'rgba(99, 102, 241, 0.15)'
+                          : 'rgba(245, 158, 11, 0.15)',
                       color:
                         order.status === 'Delivered'
-                          ? '#15803d'
+                          ? 'var(--success-color)'
                           : order.status === 'Shipped'
-                          ? '#1d4ed8'
-                          : '#b45309',
+                          ? 'var(--accent-primary)'
+                          : 'var(--warning-color)',
+                      border: '1px solid var(--border-color)',
                     }}
                   >
                     {order.status}
                   </span>
                 </div>
-                <div style={{ color: '#64748b', fontSize: '13px', display: 'flex', gap: '16px' }}>
+                <div style={{ color: 'var(--text-muted)', fontSize: '13px', display: 'flex', gap: '16px' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <Calendar size={14} /> {order.created_at || 'Recent'}
                   </span>
@@ -145,7 +149,7 @@ export const MyOrders = () => {
               </div>
 
               <div style={{ textAlign: 'right' }}>
-                <span style={{ fontSize: '18px', fontWeight: '700', color: '#0f172a' }}>
+                <span style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text-primary)' }}>
                   ${Number(order.total_amount).toFixed(2)}
                 </span>
               </div>

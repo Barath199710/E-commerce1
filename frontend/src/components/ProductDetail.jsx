@@ -24,7 +24,7 @@ export const ProductDetail = ({ product, isOpen, onClose, onOrder }) => {
               maxHeight: '320px',
               borderRadius: 'var(--radius-lg)',
               overflow: 'hidden',
-              background: '#0d121c',
+              background: 'var(--bg-primary)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

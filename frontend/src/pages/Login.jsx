@@ -49,12 +49,12 @@ export const Login = ({ onSuccessRedirect }) => {
     <div style={{ maxWidth: "440px", margin: "40px auto", padding: "0 16px" }}>
       <div
         style={{
-          background: "#ffffff",
+          background: "var(--card-bg)",
           borderRadius: "16px",
-          boxShadow:
-            "0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.01)",
-          border: "1px solid #e2e8f0",
+          boxShadow: "var(--shadow-md)",
+          border: "1px solid var(--border-color)",
           padding: "32px 28px",
+          transition: "var(--theme-transition)",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: "24px" }}>
@@ -63,12 +63,13 @@ export const Login = ({ onSuccessRedirect }) => {
               width: "52px",
               height: "52px",
               borderRadius: "12px",
-              background: "#e0e7ff",
-              color: "#4f46e5",
+              background: "var(--bg-surface-elevated)",
+              color: "var(--accent-primary)",
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
               marginBottom: "12px",
+              border: "1px solid var(--border-color)",
             }}
           >
             <LogIn size={26} />
@@ -77,21 +78,23 @@ export const Login = ({ onSuccessRedirect }) => {
             style={{
               fontSize: "22px",
               fontWeight: "700",
-              color: "#1e293b",
+              color: "var(--text-primary)",
               margin: "0 0 6px",
             }}
           >
             Login to your account
           </h2>
-          <p style={{ color: "#64748b", fontSize: "14px", margin: 0 }}></p>
+          <p style={{ color: "var(--text-secondary)", fontSize: "14px", margin: 0 }}>
+            Enter your credentials to continue
+          </p>
         </div>
 
         {errorMsg && (
           <div
             style={{
-              background: "#fef2f2",
-              border: "1px solid #fecaca",
-              color: "#991b1b",
+              background: "rgba(239, 68, 68, 0.15)",
+              border: "1px solid var(--error-color)",
+              color: "var(--error-color)",
               padding: "12px 14px",
               borderRadius: "8px",
               fontSize: "14px",
@@ -109,7 +112,7 @@ export const Login = ({ onSuccessRedirect }) => {
                 display: "block",
                 fontSize: "13px",
                 fontWeight: "600",
-                color: "#334155",
+                color: "var(--text-secondary)",
                 marginBottom: "6px",
               }}
             >
@@ -122,7 +125,7 @@ export const Login = ({ onSuccessRedirect }) => {
                   position: "absolute",
                   left: "12px",
                   top: "12px",
-                  color: "#94a3b8",
+                  color: "var(--text-muted)",
                 }}
               />
               <input
@@ -135,9 +138,12 @@ export const Login = ({ onSuccessRedirect }) => {
                   width: "100%",
                   padding: "10px 12px 10px 38px",
                   borderRadius: "8px",
-                  border: "1px solid #cbd5e1",
+                  border: "1px solid var(--border-color)",
+                  background: "var(--bg-surface-elevated)",
+                  color: "var(--text-primary)",
                   fontSize: "14px",
                   boxSizing: "border-box",
+                  transition: "var(--theme-transition)",
                 }}
               />
             </div>
@@ -149,7 +155,7 @@ export const Login = ({ onSuccessRedirect }) => {
                 display: "block",
                 fontSize: "13px",
                 fontWeight: "600",
-                color: "#334155",
+                color: "var(--text-secondary)",
                 marginBottom: "6px",
               }}
             >
@@ -162,7 +168,7 @@ export const Login = ({ onSuccessRedirect }) => {
                   position: "absolute",
                   left: "12px",
                   top: "12px",
-                  color: "#94a3b8",
+                  color: "var(--text-muted)",
                 }}
               />
               <input
@@ -175,9 +181,12 @@ export const Login = ({ onSuccessRedirect }) => {
                   width: "100%",
                   padding: "10px 12px 10px 38px",
                   borderRadius: "8px",
-                  border: "1px solid #cbd5e1",
+                  border: "1px solid var(--border-color)",
+                  background: "var(--bg-surface-elevated)",
+                  color: "var(--text-primary)",
                   fontSize: "14px",
                   boxSizing: "border-box",
+                  transition: "var(--theme-transition)",
                 }}
               />
             </div>
@@ -191,12 +200,12 @@ export const Login = ({ onSuccessRedirect }) => {
               padding: "12px",
               borderRadius: "8px",
               border: "none",
-              background: "#4f46e5",
+              background: "var(--accent-primary)",
               color: "#ffffff",
               fontSize: "15px",
               fontWeight: "600",
               cursor: submitting ? "not-allowed" : "pointer",
-              boxShadow: "0 4px 12px rgba(79, 70, 229, 0.25)",
+              boxShadow: "var(--shadow-glow)",
               transition: "all 0.2s ease",
             }}
           >
@@ -209,20 +218,20 @@ export const Login = ({ onSuccessRedirect }) => {
           style={{
             marginTop: "24px",
             paddingTop: "20px",
-            borderTop: "1px solid #f1f5f9",
+            borderTop: "1px solid var(--border-color)",
           }}
         >
           <p
             style={{
               fontSize: "12px",
-              color: "#64748b",
+              color: "var(--text-muted)",
               fontWeight: "600",
               marginBottom: "10px",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
             }}
           >
-            Accounts:
+            Demo Accounts:
           </p>
           <div
             style={{
@@ -243,12 +252,13 @@ export const Login = ({ onSuccessRedirect }) => {
                 gap: "6px",
                 padding: "8px 10px",
                 borderRadius: "8px",
-                border: "1px solid #c7d2fe",
-                background: "#eef2ff",
-                color: "#3730a3",
+                border: "1px solid var(--border-color)",
+                background: "var(--bg-surface-elevated)",
+                color: "var(--accent-primary)",
                 fontSize: "12px",
                 fontWeight: "600",
                 cursor: "pointer",
+                transition: "var(--theme-transition)",
               }}
             >
               <Shield size={14} /> Admin User
@@ -266,12 +276,13 @@ export const Login = ({ onSuccessRedirect }) => {
                 gap: "6px",
                 padding: "8px 10px",
                 borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                background: "#f8fafc",
-                color: "#334155",
+                border: "1px solid var(--border-color)",
+                background: "var(--bg-surface-elevated)",
+                color: "var(--text-primary)",
                 fontSize: "12px",
                 fontWeight: "600",
                 cursor: "pointer",
+                transition: "var(--theme-transition)",
               }}
             >
               <UserCheck size={14} /> Customer User

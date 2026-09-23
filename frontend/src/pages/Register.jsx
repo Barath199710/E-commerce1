@@ -41,11 +41,12 @@ export const Register = ({ onSuccessRedirect }) => {
     <div style={{ maxWidth: '460px', margin: '40px auto', padding: '0 16px' }}>
       <div
         style={{
-          background: '#ffffff',
+          background: 'var(--card-bg)',
           borderRadius: '16px',
-          boxShadow: '0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.01)',
-          border: '1px solid #e2e8f0',
+          boxShadow: 'var(--shadow-md)',
+          border: '1px solid var(--border-color)',
           padding: '32px 28px',
+          transition: 'var(--theme-transition)',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
@@ -54,20 +55,21 @@ export const Register = ({ onSuccessRedirect }) => {
               width: '52px',
               height: '52px',
               borderRadius: '12px',
-              background: '#dcfce7',
-              color: '#15803d',
+              background: 'var(--bg-surface-elevated)',
+              color: 'var(--success-color)',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: '12px',
+              border: '1px solid var(--border-color)',
             }}
           >
             <UserPlus size={26} />
           </div>
-          <h2 style={{ fontSize: '22px', fontWeight: '700', color: '#1e293b', margin: '0 0 6px' }}>
+          <h2 style={{ fontSize: '22px', fontWeight: '700', color: 'var(--text-primary)', margin: '0 0 6px' }}>
             Create New Account
           </h2>
-          <p style={{ color: '#64748b', fontSize: '14px', margin: 0 }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>
             Register to receive signed JWT access and refresh tokens
           </p>
         </div>
@@ -75,9 +77,9 @@ export const Register = ({ onSuccessRedirect }) => {
         {errorMsg && (
           <div
             style={{
-              background: '#fef2f2',
-              border: '1px solid #fecaca',
-              color: '#991b1b',
+              background: 'rgba(239, 68, 68, 0.15)',
+              border: '1px solid var(--error-color)',
+              color: 'var(--error-color)',
               padding: '12px 14px',
               borderRadius: '8px',
               fontSize: '14px',
@@ -90,11 +92,11 @@ export const Register = ({ onSuccessRedirect }) => {
 
         <form onSubmit={handleRegister}>
           <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#334155', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '6px' }}>
               Full Name
             </label>
             <div style={{ position: 'relative' }}>
-              <User size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#94a3b8' }} />
+              <User size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: 'var(--text-muted)' }} />
               <input
                 type="text"
                 value={name}
@@ -105,20 +107,23 @@ export const Register = ({ onSuccessRedirect }) => {
                   width: '100%',
                   padding: '10px 12px 10px 38px',
                   borderRadius: '8px',
-                  border: '1px solid #cbd5e1',
+                  border: '1px solid var(--border-color)',
+                  background: 'var(--bg-surface-elevated)',
+                  color: 'var(--text-primary)',
                   fontSize: '14px',
                   boxSizing: 'border-box',
+                  transition: 'var(--theme-transition)',
                 }}
               />
             </div>
           </div>
 
           <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#334155', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '6px' }}>
               Email Address
             </label>
             <div style={{ position: 'relative' }}>
-              <Mail size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#94a3b8' }} />
+              <Mail size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: 'var(--text-muted)' }} />
               <input
                 type="email"
                 value={email}
@@ -129,20 +134,23 @@ export const Register = ({ onSuccessRedirect }) => {
                   width: '100%',
                   padding: '10px 12px 10px 38px',
                   borderRadius: '8px',
-                  border: '1px solid #cbd5e1',
+                  border: '1px solid var(--border-color)',
+                  background: 'var(--bg-surface-elevated)',
+                  color: 'var(--text-primary)',
                   fontSize: '14px',
                   boxSizing: 'border-box',
+                  transition: 'var(--theme-transition)',
                 }}
               />
             </div>
           </div>
 
           <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#334155', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '6px' }}>
               Password
             </label>
             <div style={{ position: 'relative' }}>
-              <KeyRound size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#94a3b8' }} />
+              <KeyRound size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: 'var(--text-muted)' }} />
               <input
                 type="password"
                 value={password}
@@ -153,20 +161,23 @@ export const Register = ({ onSuccessRedirect }) => {
                   width: '100%',
                   padding: '10px 12px 10px 38px',
                   borderRadius: '8px',
-                  border: '1px solid #cbd5e1',
+                  border: '1px solid var(--border-color)',
+                  background: 'var(--bg-surface-elevated)',
+                  color: 'var(--text-primary)',
                   fontSize: '14px',
                   boxSizing: 'border-box',
+                  transition: 'var(--theme-transition)',
                 }}
               />
             </div>
           </div>
 
           <div style={{ marginBottom: '24px' }}>
-            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#334155', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '6px' }}>
               Account Role
             </label>
             <div style={{ position: 'relative' }}>
-              <Shield size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: '#94a3b8' }} />
+              <Shield size={18} style={{ position: 'absolute', left: '12px', top: '12px', color: 'var(--text-muted)' }} />
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
@@ -174,10 +185,12 @@ export const Register = ({ onSuccessRedirect }) => {
                   width: '100%',
                   padding: '10px 12px 10px 38px',
                   borderRadius: '8px',
-                  border: '1px solid #cbd5e1',
+                  border: '1px solid var(--border-color)',
                   fontSize: '14px',
-                  background: '#fff',
+                  background: 'var(--bg-surface-elevated)',
+                  color: 'var(--text-primary)',
                   boxSizing: 'border-box',
+                  transition: 'var(--theme-transition)',
                 }}
               >
                 <option value="customer">Customer (Standard User)</option>
@@ -194,12 +207,13 @@ export const Register = ({ onSuccessRedirect }) => {
               padding: '12px',
               borderRadius: '8px',
               border: 'none',
-              background: '#16a34a',
+              background: 'var(--success-color)',
               color: '#ffffff',
               fontSize: '15px',
               fontWeight: '600',
               cursor: submitting ? 'not-allowed' : 'pointer',
-              boxShadow: '0 4px 12px rgba(22, 163, 74, 0.25)',
+              boxShadow: '0 4px 12px rgba(16, 185, 129, 0.25)',
+              transition: 'all 0.2s ease',
             }}
           >
             {submitting ? 'Creating Account...' : 'Register & Log In'}

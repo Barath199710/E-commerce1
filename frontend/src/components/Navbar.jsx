@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import {
   Search,
   PlusCircle,
@@ -9,6 +10,8 @@ import {
   LogIn,
   UserPlus,
   Key,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 export const Navbar = ({
@@ -20,16 +23,18 @@ export const Navbar = ({
   apiCallCount,
 }) => {
   const { user, logout, isAuthenticated, isAdmin } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header
       style={{
-        background: "#ffffff",
-        borderBottom: "1px solid #e2e8f0",
+        background: "var(--navbar-bg)",
+        borderBottom: "1px solid var(--border-color)",
         position: "sticky",
         top: 0,
         zIndex: 100,
-        boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+        boxShadow: "var(--shadow-sm)",
+        transition: "var(--theme-transition)",
       }}
     >
       <div
@@ -43,7 +48,7 @@ export const Navbar = ({
           gap: "16px",
         }}
       >
-        {/* Brand & Badge */}
+        {/* Brand & Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <div
             onClick={() => setActiveTab("home")}
@@ -59,7 +64,7 @@ export const Navbar = ({
                 width: "36px",
                 height: "36px",
                 borderRadius: "10px",
-                background: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                background: "var(--accent-gradient)",
                 color: "#fff",
                 display: "flex",
                 alignItems: "center",
@@ -75,21 +80,13 @@ export const Navbar = ({
                 style={{
                   fontSize: "18px",
                   fontWeight: "800",
-                  color: "#0f172a",
+                  color: "var(--text-primary)",
                   margin: 0,
                   lineHeight: 1.2,
                 }}
               >
                 Easy Buy
               </h1>
-              <span
-                style={{
-                  fontSize: "11px",
-                  color: "#6366f1",
-                  fontWeight: "700",
-                  letterSpacing: "0.4px",
-                }}
-              ></span>
             </div>
           </div>
         </div>
@@ -104,7 +101,7 @@ export const Navbar = ({
                 left: "12px",
                 top: "50%",
                 transform: "translateY(-50%)",
-                color: "#94a3b8",
+                color: "var(--text-muted)",
               }}
             />
             <input
@@ -116,11 +113,13 @@ export const Navbar = ({
                 width: "100%",
                 padding: "8px 12px 8px 38px",
                 borderRadius: "20px",
-                border: "1px solid #cbd5e1",
+                border: "1px solid var(--border-color)",
                 fontSize: "14px",
                 outline: "none",
-                background: "#f8fafc",
+                background: "var(--bg-surface-elevated)",
+                color: "var(--text-primary)",
                 boxSizing: "border-box",
+                transition: "var(--theme-transition)",
               }}
             />
           </div>
@@ -135,14 +134,15 @@ export const Navbar = ({
               padding: "8px 14px",
               borderRadius: "8px",
               border: "none",
-              background: activeTab === "home" ? "#eef2ff" : "transparent",
-              color: activeTab === "home" ? "#4f46e5" : "#475569",
+              background: activeTab === "home" ? "var(--accent-primary)" : "transparent",
+              color: activeTab === "home" ? "#ffffff" : "var(--text-secondary)",
               fontWeight: activeTab === "home" ? "700" : "500",
               fontSize: "14px",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
               gap: "6px",
+              transition: "var(--theme-transition)",
             }}
           >
             <ShoppingBag size={16} /> Products
@@ -156,14 +156,15 @@ export const Navbar = ({
                 borderRadius: "8px",
                 border: "none",
                 background:
-                  activeTab === "my_orders" ? "#eef2ff" : "transparent",
-                color: activeTab === "my_orders" ? "#4f46e5" : "#475569",
+                  activeTab === "my_orders" ? "var(--accent-primary)" : "transparent",
+                color: activeTab === "my_orders" ? "#ffffff" : "var(--text-secondary)",
                 fontWeight: activeTab === "my_orders" ? "700" : "500",
                 fontSize: "14px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
+                transition: "var(--theme-transition)",
               }}
             >
               My Orders
@@ -178,14 +179,15 @@ export const Navbar = ({
                   padding: "8px 14px",
                   borderRadius: "8px",
                   border: "none",
-                  background: activeTab === "admin" ? "#eef2ff" : "transparent",
-                  color: activeTab === "admin" ? "#4f46e5" : "#475569",
+                  background: activeTab === "admin" ? "var(--accent-primary)" : "transparent",
+                  color: activeTab === "admin" ? "#ffffff" : "var(--text-secondary)",
                   fontWeight: activeTab === "admin" ? "700" : "500",
                   fontSize: "14px",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   gap: "6px",
+                  transition: "var(--theme-transition)",
                 }}
               >
                 <ShieldCheck size={16} /> Admin Orders
@@ -197,7 +199,7 @@ export const Navbar = ({
                   padding: "8px 14px",
                   borderRadius: "8px",
                   border: "none",
-                  background: "#4f46e5",
+                  background: "var(--accent-primary)",
                   color: "#ffffff",
                   fontWeight: "600",
                   fontSize: "14px",
@@ -205,13 +207,40 @@ export const Navbar = ({
                   display: "flex",
                   alignItems: "center",
                   gap: "6px",
-                  boxShadow: "0 2px 6px rgba(79, 70, 229, 0.2)",
+                  boxShadow: "var(--shadow-glow)",
                 }}
               >
                 <PlusCircle size={16} /> Add Product
               </button>
             </>
           )}
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            aria-label="Toggle Dark and Light Theme"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "36px",
+              height: "36px",
+              borderRadius: "10px",
+              border: "1px solid var(--border-color)",
+              background: "var(--bg-surface-elevated)",
+              color: "var(--text-primary)",
+              cursor: "pointer",
+              transition: "var(--theme-transition)",
+              marginLeft: "4px",
+            }}
+          >
+            {theme === "light" ? (
+              <Moon size={18} style={{ color: "#475569" }} />
+            ) : (
+              <Sun size={18} style={{ color: "#f59e0b" }} />
+            )}
+          </button>
 
           {/* User Auth Controls */}
           {isAuthenticated ? (
@@ -225,8 +254,8 @@ export const Navbar = ({
             >
               <div
                 style={{
-                  background: user?.role === "admin" ? "#e0e7ff" : "#f1f5f9",
-                  color: user?.role === "admin" ? "#3730a3" : "#334155",
+                  background: "var(--bg-surface-elevated)",
+                  color: "var(--text-primary)",
                   padding: "6px 12px",
                   borderRadius: "20px",
                   fontSize: "13px",
@@ -234,7 +263,7 @@ export const Navbar = ({
                   display: "flex",
                   alignItems: "center",
                   gap: "6px",
-                  border: "1px solid #cbd5e1",
+                  border: "1px solid var(--border-color)",
                 }}
               >
                 <span>{user?.name}</span>
@@ -244,7 +273,7 @@ export const Navbar = ({
                     textTransform: "uppercase",
                     padding: "2px 6px",
                     borderRadius: "10px",
-                    background: user?.role === "admin" ? "#4f46e5" : "#64748b",
+                    background: user?.role === "admin" ? "var(--accent-primary)" : "var(--text-muted)",
                     color: "#ffffff",
                     fontWeight: "700",
                   }}
@@ -262,9 +291,9 @@ export const Navbar = ({
                 style={{
                   padding: "8px",
                   borderRadius: "8px",
-                  border: "1px solid #cbd5e1",
-                  background: "#ffffff",
-                  color: "#ef4444",
+                  border: "1px solid var(--border-color)",
+                  background: "var(--bg-surface-elevated)",
+                  color: "var(--error-color)",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
@@ -288,9 +317,9 @@ export const Navbar = ({
                 style={{
                   padding: "8px 14px",
                   borderRadius: "8px",
-                  border: "1px solid #cbd5e1",
-                  background: activeTab === "login" ? "#f1f5f9" : "#ffffff",
-                  color: "#334155",
+                  border: "1px solid var(--border-color)",
+                  background: activeTab === "login" ? "var(--bg-surface-elevated)" : "transparent",
+                  color: "var(--text-primary)",
                   fontWeight: "600",
                   fontSize: "13px",
                   cursor: "pointer",
@@ -308,7 +337,7 @@ export const Navbar = ({
                   padding: "8px 14px",
                   borderRadius: "8px",
                   border: "none",
-                  background: activeTab === "register" ? "#15803d" : "#16a34a",
+                  background: "var(--accent-primary)",
                   color: "#ffffff",
                   fontWeight: "600",
                   fontSize: "13px",

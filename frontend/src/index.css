@@ -1,5 +1,53 @@
-:root {
+/* Light theme — default */
+:root, :root[data-theme='light'] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+  --border-color: #e2e8f0;
+  --border-focus: #6366f1;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --accent-primary: #6366f1;
+  --accent-primary-hover: #4f46e5;
+  --accent-secondary: #0891b2;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+
+  --card-bg: #ffffff;
+  --navbar-bg: #ffffff;
+  --btn-primary: #6366f1;
+  --btn-text: #ffffff;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+  --shadow-glow: 0 4px 14px rgba(99, 102, 241, 0.25);
+
+  --bg-radial: 
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.06) 0%, transparent 40%);
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark theme */
+:root[data-theme='dark'] {
   --bg-primary: #0a0d14;
+  --bg-secondary: #0f0f1a;
   --bg-surface: #121824;
   --bg-surface-elevated: #1a2234;
   --bg-glass: rgba(26, 34, 52, 0.75);
@@ -18,18 +66,19 @@
   --error-color: #ef4444;
   --warning-color: #f59e0b;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --card-bg: #121824;
+  --navbar-bg: #0d121c;
+  --btn-primary: #6366f1;
+  --btn-text: #ffffff;
 
   --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.35);
   --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
   --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.3);
 
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s ease;
+  --bg-radial: 
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
 }
 
 * {
@@ -45,10 +94,9 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
+  background-image: var(--bg-radial);
   background-attachment: fixed;
+  transition: var(--theme-transition);
 }
 
 .app-container {
@@ -600,7 +648,7 @@ body {
 }
 
 .orders-table th {
-  background: rgba(10, 13, 20, 0.8);
+  background: var(--bg-surface-elevated);
   padding: 14px 20px;
   color: var(--text-secondary);
   font-weight: 700;
@@ -608,6 +656,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.5px;
   border-bottom: 1px solid var(--border-color);
+  transition: var(--theme-transition);
 }
 
 .orders-table td {
@@ -615,10 +664,11 @@ body {
   border-bottom: 1px solid var(--border-color);
   color: var(--text-secondary);
   vertical-align: middle;
+  transition: var(--theme-transition);
 }
 
 .orders-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-secondary);
 }
 
 /* Status Badges */

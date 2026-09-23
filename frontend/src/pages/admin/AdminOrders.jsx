@@ -193,7 +193,7 @@ export const AdminOrders = ({ onIncrementApiCounter }) => {
                     <span style={{ fontWeight: 600 }}>{order.items_count} items</span>
                   </td>
                   <td>
-                    <span style={{ fontWeight: 800, color: '#fff' }}>${parseFloat(order.total_amount).toFixed(2)}</span>
+                    <span style={{ fontWeight: 800, color: 'var(--text-primary)' }}>${parseFloat(order.total_amount).toFixed(2)}</span>
                   </td>
                   <td>{getStatusBadge(order.status)}</td>
                   <td style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
